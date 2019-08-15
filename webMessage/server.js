@@ -48,7 +48,14 @@ mongoose.connect(dbUrl,{ useNewUrlParser: true },(err)=>{
     console.log('mongo db connection', err)
 })
 
+//test
+app.get('/', (req, res) => {
+    res.send('run test on travis');
+  });
 
 var server = http.listen(3000, () => {
-    console.log('server is listening on port', server.address().port)
+    console.log('App running on port', server.address().port)
 })
+
+
+  

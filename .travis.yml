@@ -6,4 +6,4 @@ cache:
     - "node_modules"
 
     
-script: ./test/test
+script: ./webMessage/test/test

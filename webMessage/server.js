@@ -8,8 +8,13 @@ var mongoose = require('mongoose')
 app.use(express.static(__dirname))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
+app.listen(process.env.PORT);
 
 var dbUrl = 'mongodb+srv://ontheway:ontheway@node-qlelv.gcp.mongodb.net/test?retryWrites=true&w=majority'
+
+var server = http.listen(process.env.PORT || 3000, () => {
+    console.log('App running on port', server.address().port)
+})
 
 var Message = mongoose.model('Message',{
     name: String,
@@ -53,9 +58,6 @@ app.get('/', (req, res) => {
     res.send('run test on travis');
   });
 
-var server = http.listen(3000, () => {
-    console.log('App running on port', server.address().port)
-})
 
 
-  
+

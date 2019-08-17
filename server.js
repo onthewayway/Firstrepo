@@ -11,21 +11,11 @@ app.use(bodyParser.urlencoded({extended: false}))
 
 var dbUrl = 'mongodb+srv://ontheway:ontheway@node-qlelv.gcp.mongodb.net/test?retryWrites=true&w=majority'
 
-
-var server = process.env.PORT || 3000;
-var server = http.listen( 3000, () => {
-    console.log('App running on port', server.address().port)
-})
-
 var Message = mongoose.model('Message',{
     name: String,
     message: String
 })
 
-var messages = [
-    {name: 'Tim', message: 'Hi'},
-    {name: 'Jane', message: 'Hello'}
-]
 
 app.get('/messages', (req, res) =>{
     Message.find({},(err,messages)=>{
@@ -50,15 +40,20 @@ io.on('connection', (socket) => {
    console.log('a user connected')
 })
 
-// mongoose.connect(dbUrl,{ useNewUrlParser: true },(err)=>{
-//     console.log('mongo db connection', err)
-// })
+mongoose.connect(dbUrl,{ useNewUrlParser: true },(err)=>{
+    console.log('mongo db connection', err)
+})
+
+var server = http.listen(process.env.PORT || 3000, () => {
+    console.log('App running on port', server.address().port)
+})
 
 //test
 app.get('/', (req, res) => {
     res.send('run test on travis');
   });
 
+  module.exports = server;
 
 
 

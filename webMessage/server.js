@@ -8,6 +8,7 @@ var mongoose = require('mongoose')
 app.use(express.static(__dirname))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
+app.listen(process.env.PORT);
 
 var dbUrl = 'mongodb+srv://ontheway:ontheway@node-qlelv.gcp.mongodb.net/test?retryWrites=true&w=majority'
 
@@ -57,5 +58,9 @@ var server = http.listen(3000, () => {
     console.log('App running on port', server.address().port)
 })
 
-
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 3000;
+}
+app.listen(port);
   

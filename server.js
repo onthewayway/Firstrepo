@@ -10,11 +10,6 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
 
 var dbUrl = 'mongodb+srv://ontheway:ontheway@node-qlelv.gcp.mongodb.net/test?retryWrites=true&w=majority'
-const { Pool } = require('pg');
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: true
-});
 
 
 var server = process.env.PORT || 3000;
@@ -64,17 +59,6 @@ app.get('/', (req, res) => {
     res.send('run test on travis');
   });
 
-app.get('/db', async (req, res) => {
-    try {
-      const client = await pool.connect()
-      const result = await client.query('SELECT * FROM test_table');
-      const results = { 'results': (result) ? result.rows : null};
-      res.render('pages/db', results );
-      client.release();
-    } catch (err) {
-      console.error(err);
-      res.send("Error " + err);
-    }
-  })
+
 
 

@@ -12,6 +12,10 @@ app.listen(process.env.PORT);
 
 var dbUrl = 'mongodb+srv://ontheway:ontheway@node-qlelv.gcp.mongodb.net/test?retryWrites=true&w=majority'
 
+var server = http.listen(process.env.PORT || 3000, () => {
+    console.log('App running on port', server.address().port)
+})
+
 var Message = mongoose.model('Message',{
     name: String,
     message: String
@@ -55,7 +59,5 @@ app.get('/', (req, res) => {
   });
 
 
-var server = http.listen(process.env.PORT || 3000, () => {
-    console.log('App running on port', server.address().port)
-})
+
 

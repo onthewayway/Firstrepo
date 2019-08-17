@@ -1,5 +1,5 @@
 var expect = require('chai').expect
-var server2 = require('../server');
+var server = require('../server');
 
 describe('test', () => {
   it('run test on travis',function (done) {

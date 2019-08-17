@@ -13,7 +13,7 @@ var dbUrl = 'mongodb+srv://ontheway:ontheway@node-qlelv.gcp.mongodb.net/test?ret
 
 
 var server = process.env.PORT || 3000;
-var server = http.listen( 3000, () => {
+var server = http.listen(process.env.PORT || 3000, () => {
     console.log('App running on port', server.address().port)
 })
 
@@ -59,6 +59,7 @@ app.get('/', (req, res) => {
     res.send('run test on travis');
   });
 
+  module.exports = server;
 
 
 

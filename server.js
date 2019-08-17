@@ -13,7 +13,7 @@ var dbUrl = 'mongodb+srv://ontheway:ontheway@node-qlelv.gcp.mongodb.net/test?ret
 
 
 var server = process.env.PORT || 3000;
-var server = http.listen(process.env.PORT || 3000, () => {
+var server = http.listen( 3000, () => {
     console.log('App running on port', server.address().port)
 })
 
@@ -47,12 +47,12 @@ app.post('/messages', (req, res) =>{
 })
 
 io.on('connection', (socket) => {
-    console.log('a user connected')
+   console.log('a user connected')
 })
 
-mongoose.connect(dbUrl,{ useNewUrlParser: true },(err)=>{
-    console.log('mongo db connection', err)
-})
+// mongoose.connect(dbUrl,{ useNewUrlParser: true },(err)=>{
+//     console.log('mongo db connection', err)
+// })
 
 //test
 app.get('/', (req, res) => {
